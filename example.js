@@ -36,9 +36,9 @@ barGroups.append("rect")
     .duration(1000)
     .attr("width", d => xScale(d) - 50); // Animate bar growth
 
-// Commit: Add text labels to bars
+// Commit: Add text labels to bars via commit
 barGroups.append("text")
-  .attr("x", d => xScale(d) - 50) // Align text with bar end
-  .attr("y", 14) // Center text vertically
+  .attr("x", d => xScale(d) - 50) 
+  .attr("y", 14) 
   .attr("text-anchor", "end")
   .text(d => d);

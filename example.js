@@ -42,3 +42,19 @@ barGroups.append("text")
   .attr("y", 14) 
   .attr("text-anchor", "end")
   .text(d => d);
+
+// Implement transitions and hover effects for bars.
+barGroups.on("mouseover", function(d) {
+  d3.select(this).select("rect")
+    .transition()
+    .duration(200)
+    .attr("fill", "#999")
+    .attr("opacity", 1);
+})
+.on("mouseout", function(d) {
+  d3.select(this).select("rect")
+    .transition()
+    .duration(200)
+    .attr("fill", "#ccc")
+    .attr("opacity", 0.8);
+});

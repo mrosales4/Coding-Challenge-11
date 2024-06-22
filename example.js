@@ -19,3 +19,26 @@ svg.attr("width", 500)
 const xScale = d3.scaleLinear()
   .domain([0, d3.max(data)]) 
   .range([50, 500]);  
+// Creating G element 
+const barGroups = svg.selectAll("g")
+  .data(data)
+  .enter()
+  .append("g")
+  .attr("transform", (d, i) => `translate(0, ${i * 22})`); // 20px height + 1px margin
+
+// Append Rect for the bar
+barGroups.append("rect")
+  .attr("width", d => xScale(d) - 50) // Adjust for left padding
+  .attr("height", 20)
+  .attr("fill", "#ccc")
+  .attr("opacity", 0.8)
+  .transition()
+    .duration(1000)
+    .attr("width", d => xScale(d) - 50); // Animate bar growth
+
+// Commit: Add text labels to bars
+barGroups.append("text")
+  .attr("x", d => xScale(d) - 50) // Align text with bar end
+  .attr("y", 14) // Center text vertically
+  .attr("text-anchor", "end")
+  .text(d => d);

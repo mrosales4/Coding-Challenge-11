@@ -14,3 +14,8 @@ const svgHeight = data.length * (barHeight + margin);
 // Set SVG dimensions using D3.js
 svg.attr("width", 500)
    .attr("height", svgHeight);
+
+//configure linear scale for bar widths.
+const xScale = d3.scaleLinear()
+  .domain([0, d3.max(data)]) 
+  .range([50, 500]);  
